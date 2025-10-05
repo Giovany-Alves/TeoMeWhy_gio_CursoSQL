@@ -37,7 +37,7 @@ tb_sumario_transacoes AS (
         
         SUM(QtdePontos) AS saldoPontos,
         
-        MIN(diffDate) AS diasUltimaTransacao,
+        MIN(diffDate) AS diasUltimaInteracao,
         
         SUM(CASE WHEN qtdePontos >0 THEN qtdePontos ELSE 0 END) AS qtdePontosPosVida,
         SUM(CASE WHEN qtdePontos >0 AND diffDate <= 56 THEN qtdePontos ELSE 0 END) AS qtdePontosPos56,
@@ -131,7 +131,6 @@ tb_cliente_dia_rn AS (
 tb_cliente_periodo AS (
     SELECT 
         idCliente,
-        IdTransacao,
         CASE 
             WHEN dtHora BETWEEN 7 AND 12 THEN 'MANHÃ'
             WHEN dtHora BETWEEN 13 AND 18 THEN 'TARDE'
@@ -167,7 +166,7 @@ tb_join AS (
         t6.DescNomeProduto AS produto14,
         t7.DescNomeProduto AS produto7,
         COALESCE(t8.dtDia, -1) AS dtDia,
-        COALESCE(t9.rnPeriodo, 'SEM INFORMACAO') AS periodoMaisTransacao28
+        COALESCE(t9.periodo, 'SEM INFORMACAO') AS periodoMaisTransacao28
     FROM 
         tb_sumario_transacoes AS t1
 
