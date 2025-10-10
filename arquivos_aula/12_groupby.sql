@@ -9,18 +9,19 @@ GROUP BY
     IdProduto;
 
 
-SELECT
+SELECT -- 5°
     IdCliente,
     SUM(QtdePontos),
     COUNT(IdTransacao)
-FROM
+FROM -- 1º
     transacoes
-WHERE DtCriacao >= '2025-07-01' 
+WHERE -- 2º
+    DtCriacao >= '2025-07-01' 
     AND DtCriacao < '2025-08-01'  
-GROUP BY
+GROUP BY -- 3º
     IdCliente  
-HAVING -- Filtro pós agrupamento/agregação
+HAVING -- 4º | Filtro pós agrupamento/agregação
     SUM(QtdePontos) > 4000
-ORDER BY
+ORDER BY -- 6º
     SUM(QtdePontos) DESC
 LIMIT 10;

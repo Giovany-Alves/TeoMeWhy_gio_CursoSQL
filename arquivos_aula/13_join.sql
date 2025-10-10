@@ -4,9 +4,9 @@ SELECT
     *
 FROM 
     transacao_produto AS t1
-LEFT JOIN produtos AS t2
+LEFT JOIN 
+    produtos AS t2
     ON t1.IdProduto = t2.IdProduto
-
 LIMIT 2;
 
 
@@ -17,14 +17,32 @@ SELECT
     COUNT(DISTINCT t1.idTransacaoProduto) AS qtdeTransacao
 FROM 
     transacao_produto AS t1
-LEFT JOIN produtos AS t2
+LEFT JOIN 
+    produtos AS t2
     ON t1.IdProduto = t2.IdProduto
 GROUP BY 
     t2.DescCategoriaProduto
 ORDER BY 
     qtdeTransacao DESC;
 
+SELECT
+    t2.DescCategoriaProduto,
+    COUNT(DISTINCT t1.idTransacaoProduto) AS qtdeTransacao
+FROM 
+    produtos AS t2
+LEFT JOIN 
+    transacao_produto AS t1
+    ON t2.IdProduto = t1.IdProduto
+GROUP BY 
+    t2.DescCategoriaProduto
+ORDER BY 
+    qtdeTransacao DESC;
+
 -- Em 2024, quantas transações de Lover tivemos?
+
+SELECT * FROM transacoes LIMIT 5;
+SELECT * FROM transacao_produto LIMIT 5;
+SELECT * FROM produtos LIMIT 5;
 
 SELECT 
     t3.DescCategoriaProduto,
