@@ -7,7 +7,3 @@ SELECT
 FROM 
     clientes
 LIMIT 5;
-
-
-
-SELECT 'Fodasi';

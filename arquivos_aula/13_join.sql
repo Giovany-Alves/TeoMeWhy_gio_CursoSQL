@@ -7,7 +7,7 @@ FROM
 LEFT JOIN 
     produtos AS t2
     ON t1.IdProduto = t2.IdProduto
-LIMIT 2;
+LIMIT 10;
 
 
 -- Qual categoria tem produtos mais vendidos?
